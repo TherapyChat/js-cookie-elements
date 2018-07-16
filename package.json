@@ -1,6 +1,6 @@
 {
   "name": "@therapychat/js-cookie-elements",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Web Component to use js-cookie",
   "main": "js-cookie-elements.html",
   "scripts": {
