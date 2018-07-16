@@ -17,6 +17,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 
+## [UNRELEASED]
+### Added
+- Add travis encripted variables
+
+
+
+
 ## v1.0.0 - 2018-07-16
 ### Added
 - Whole project first setup
