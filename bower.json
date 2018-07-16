@@ -1,0 +1,65 @@
+{
+  "name": "js-cookie-elements",
+  "authors": [
+    "Therapychat <contacto@therapychat.com> (http://therapychat.com)",
+    "Alberto Fernandez <albertofdzm@gmail.com> (http://onlythepixel.com)"
+  ],
+  "description": "Web Component to use js-cookie",
+  "main": [
+    "js-cookie-element.html",
+    "js-cookie-behavior.html",
+    "js-cookie-script.html"
+  ],
+  "keywords": [
+    "web-components",
+    "web-component",
+    "polymer",
+    "cookie",
+    "cookies",
+    "js-cookie"
+  ],
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/TherapyChat/js-cookie-elements#readme",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#1.9 - 2",
+    "js-cookie": "^2.2.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#1 - 2",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#1 - 2",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#1 - 2",
+    "paper-button": "PolymerElements/paper-button#1 - 2",
+    "test-fixture": "PolymerElements/test-fixture#^3.0.0-rc.1",
+    "web-component-tester": "^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  },
+  "variants": {
+    "1.x": {
+      "dependencies": {
+        "polymer": "Polymer/polymer#^1.9"
+      },
+      "devDependencies": {
+        "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+        "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+        "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.0.0",
+        "paper-button": "PolymerElements/paper-button#^1.0.0",
+        "test-fixture": "PolymerElements/test-fixture#^1.0.0",
+        "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
+        "web-component-tester": "Polymer/web-component-tester#^4.0.0"
+      },
+      "resolutions": {
+        "webcomponentsjs": "^0.7"
+      }
+    }
+  },
+  "resolutions": {
+    "webcomponentsjs": "^1.0.0"
+  }
+}

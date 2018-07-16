@@ -1,0 +1,88 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="./js-cookie-script.html">
+
+<script>
+  /* global Cookies */
+  (function () {
+    var JSCookie = Cookies.noConflict()
+
+    /** @polymerBehavior Polymer.JSCookieBehavior */
+    Polymer.JSCookieBehavior = {
+
+      properties: {
+        /**
+        * JSCookie reference
+        */
+        JSCookie: Object
+      },
+
+      ready: function () {
+        this.JSCookie = JSCookie
+      },
+
+      /**
+      * Get cookies
+      */
+      getCookie: function (name, options) {
+        var value
+
+        if (options) {
+          value = JSCookie.get(name, options)
+        } else if (name) {
+          value = JSCookie.get(name)
+        } else {
+          value = JSCookie.get()
+        }
+
+        return value
+      },
+
+      /**
+      * Get cookies as JSON
+      */
+      getCookieJSON: function (name, options) {
+        var value
+
+        if (options) {
+          value = JSCookie.getJSON(name, options)
+        } else if (name) {
+          value = JSCookie.getJSON(name)
+        } else {
+          value = JSCookie.getJSON()
+        }
+
+        return value
+      },
+
+      /**
+      * Removes cookie
+      */
+      removeCookie: function (name, options) {
+        var value
+
+        if (options) {
+          value = JSCookie.remove(name, options)
+        } else {
+          value = JSCookie.remove(name)
+        }
+
+        return value
+      },
+
+      /**
+      * Sets cookie
+      */
+      setCookie: function (name, value, options) {
+        var result
+
+        if (options) {
+          result = JSCookie.set(name, value, options)
+        } else {
+          result = JSCookie.set(name, value)
+        }
+
+        return result
+      }
+    }
+  }())
+</script>

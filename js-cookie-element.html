@@ -1,0 +1,89 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="./js-cookie-behavior.html">
+
+<!--
+Web Component to use [js-cookie](https://github.com/js-cookie/js-cookie)
+
+@demo demo/index.html
+-->
+
+<dom-module id="js-cookie-element">
+  <script>
+    Polymer({
+      is: 'js-cookie-element',
+
+      behaviors: [
+        Polymer.JSCookieBehavior
+      ],
+
+      properties: {
+        cookieName: String,
+        cookieValue: String,
+        cookieOptions: Object,
+        _currentCookieName: String,
+        _currentCookieValue: String,
+        _currentCookieOptions: Object
+      },
+
+      ready: function () {
+        if (this.cookieValue) {
+          this._setCookie()
+        } else {
+          this._getCookie()
+        }
+      },
+
+      _getCookie: function () {
+        if (this.cookieName && !this.cookieValue) {
+          if (this._currentCookieName) this._removeCookie()
+
+          if (this.cookieOptions) {
+            this.cookieValue = this.getCookie(this.cookieName, this.cookieOptions)
+          } else {
+            this.cookieValue = this.getCookie(this.cookieName)
+          }
+
+          this._setCurrentConfig()
+        }
+      },
+
+      _removeCookie: function () {
+        if (this._currentCookieName) {
+          if (this._currentCookieOptions) {
+            this.removeCookie(this._currentCookieName, this._currentCookieOptions)
+          } else {
+            this.removeCookie(this._currentCookieName)
+          }
+        }
+
+        this._resetCurrentConfig()
+      },
+
+      _resetCurrentConfig: function () {
+        this._currentCookieName = undefined
+        this._currentCookieValue = undefined
+        this._currentCookieOptions = undefined
+      },
+
+      _setCookie: function () {
+        if (this.cookieName && this.cookieValue) {
+          if (this._currentCookieName) this._removeCookie()
+
+          if (this.cookieOptions) {
+            this.setCookie(this.cookieName, this.cookieValue, this.cookieOptions)
+          } else {
+            this.setCookie(this.cookieName, this.cookieValue)
+          }
+
+          this._setCurrentConfig()
+        }
+      },
+
+      _setCurrentConfig: function () {
+        this._currentCookieName = this.cookieName
+        this._currentCookieValue = this.cookieValue
+        this._currentCookieOptions = this.cookieOptions
+      }
+    })
+  </script>
+</dom-module>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+  <title>js-cookie-behavior demo</title>
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="../../polymer/polymer.html">
+  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+  <link rel="import" href="../../paper-button/paper-button.html">
+  <link rel="import" href="../js-cookie-behavior.html">
+</head>
+<body unresolved>
+  <dom-module id="app-element">
+    <template>
+      <style>
+        code {
+          font-family: Consolas, monaco, monospace;
+          padding: 8px;
+          background: #dddddd;
+          border-radius: 4px;
+        }
+      </style>
+
+      <p>Cookie <code>jsCookie</code>:</p>
+      <pre><code>[[cookieValue]]</code></pre>
+      <paper-button on-click="_onClickGetCookie">Get Cookie</paper-button>
+      <paper-button on-click="_onClickSetCookie">Set Cookie</paper-button>
+      <paper-button on-click="_onClickClearCookie">Clear Cookie</paper-button>
+      <p>[[message]]</p>
+      <p>All Cookies:</p>
+      <pre><code>[[allCookiesValue]]</code></pre>
+      <paper-button on-click="_onClickGetAllCookies">Get All Cookies</paper-button>
+    </template>
+    <script>
+      Polymer({
+        is: 'app-element',
+
+        behaviors: [
+          Polymer.JSCookieBehavior
+        ],
+
+        properties: {
+          allCookiesValue: String,
+          cookieValue: String,
+          message: String
+        },
+
+        _onClickClearCookie: function (ev) {
+          this.cookieValue = this.removeCookie('jsCookie')
+          this.message = 'Cookie jsCookie removed'
+        },
+
+        _onClickGetCookie: function (ev) {
+          this.cookieValue = JSON.stringify(this.getCookieJSON('jsCookie'))
+          this.message = 'Cookie jsCookie getted'
+        },
+
+        _onClickGetAllCookies: function (ev) {
+          this.allCookiesValue = JSON.stringify(this.getCookieJSON())
+          this.message = 'All cookies getted'
+        },
+
+        _onClickSetCookie: function (ev) {
+          this.cookieValue = this.setCookie('jsCookie', 'it works!')
+          this.message = 'Cookie jsCookie set'
+        }
+      })
+    </script>
+  </dom-module>
+
+  <app-element></app-element>
+</body>
+</html>
